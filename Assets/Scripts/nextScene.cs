@@ -5,26 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class nextScene : MonoBehaviour
 {
-    public Animator animator;
-    string nextSceneName = "Puzzle";
 
-    private bool isAnimPlaying = false;
+    public string nextSceneName;
 
-    private void Start()
+    public void SwitchScene()
     {
-        animator = GetComponent<Animator>();
-        animator.enabled = false;
+        
+            Invoke("Switch", 0f);
+        
     }
-    public void PlayAnimationAndSwitchScene()
-    {
-        if (!isAnimPlaying)
-        {
-            animator.enabled = true;
-            isAnimPlaying = true;
-            Invoke("SwitchScene", 2.1f);
-        }
-    }
-    void SwitchScene()
+    void Switch()
     {
         SceneManager.LoadScene(nextSceneName);
     }
